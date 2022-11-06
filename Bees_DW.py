@@ -57,6 +57,14 @@ y_val=st.sidebar.selectbox("Pick your y axis", bee_data.select_dtypes(include=np
 st.sidebar.header("Year Filter")
 #filtered_df=df_filter("Select the year to filter the data",bee_data)
 
+
+year_list = ["All","2007-2008", "2008-2009", "2009-2010", "2010-2011", "2011-2012","2012-2013", "2013-2014","2014-2015","2015-2016","2016-2017","2017-2018","2018-2019"]
+select = st.sidebar.selectbox('Filter the year here:', year_list, key='1')
+if select =="All":
+    filtered_df = bee_data
+else:
+    filtered_df = bee_data[bee_data["Year"]==select]
+
 st.sidebar.multiselect(
     "select the year:",
     options=bee_data["Year"].unique(),
